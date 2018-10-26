@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://google.github.io/wwwbasic/wwwbasic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      #editor {
+        flex: 1;
+        height: 50vh;
+      }
+      #output {
+        flex: 1;
+        height: 50vh;
+        background-color: #000000;
+      }
+      button, button:focus, button:active, button:hover {
+        display: block;
+        position: absolute;
+        height: 30px;
+        width: 50px;
+        background-color: #1bd1b3;
+        color: #ffffff;
+        top: calc(50% - 15px);
+        left: calc(50% - 25px);
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="editor">PRINT "Hello World!"</div>
+      <canvas id="output"></canvas>
+    </div>
+    <button onclick="run()">Run</button>
+    <script>
+      var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/twilight");
+        editor.session.setMode("ace/mode/fortran");
+      function run() { 
+        window.Basic(editor.getValue(), document.getElementById('output'), true);
+      }
+    </script>
+  </body>
+</html>
